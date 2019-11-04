@@ -72,3 +72,28 @@ form.validateFields((err,values)=>{
         console.log('失败');
     }
 })
+
+## 数据请求
+`axios`
+
+## 跨域：
+端口、协议、域名  三个必须一致
+`解决办法`：
+（1）jsonp，但是只能处理get请求
+（2）让后台允许跨域。
+（3）使用代理，启动代理服务器 [ 转发请求 ]   "proxy":"http://localhost:5000"
+
+## async 和 await
+(1)作用是什么?
+    简化promise对象的使用：不用在使用.then()来指定成功和失败的函数
+    以同步编码（没有回调函数了）方式实现异步流程
+(2)哪里写await？
+    在返回promise的表达式的左侧写await，不想要promise，想要promise异步执行成功的value数据。
+(3)哪里写async？
+    await所在函数最近的左侧写async。
+
+## 路由跳转
+this.props.history.push()   #需要回退的话，用push
+this.props.history.replace()   #不需要回退回来
+this.props.history.go()
+

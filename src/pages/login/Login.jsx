@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button,message } from 'antd';
+import {reqLogin} from '../../api'
+import logo from './images/favicon.ico'
 
 import './login.less'
-import logo from './images/favicon.ico'
 
 class Login extends Component {
     constructor(props) {
@@ -15,9 +16,27 @@ class Login extends Component {
         // 阻止事件的默认行为
 				event.preventDefault();
 				
-				this.props.form.validateFields((err, values) => {
+				this.props.form.validateFields(async (err, values) => {
 					if (!err) {
-						console.log('提交表单的数据请求',values);
+                        console.log('提交表单的数据请求',values);
+                        let data = {
+                            username:values.username,
+                            password:values.password
+                        }
+                        // reqLogin(data).then((res)=>{
+                        //     console.log('reqLogin请求结果',res.data);
+                        // }).catch((error)=>{
+                        //     console.log(error)
+                        // })
+                        const result = await reqLogin(data);   // await和async一起使用。async写在await所定义的函数的左侧。
+                        console.log('reqLogin请求成功',result);
+                        if(result.status === 0){
+                            message.success('登录成功')
+                            // 跳转
+                            this.props.history.replace('/');
+                        }else{
+                            message.error(result.msg)
+                        }
 					}else{
 						console.log('验证失败')
 					}
