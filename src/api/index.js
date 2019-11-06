@@ -16,8 +16,8 @@
 import Axios from './axios'
 const httpURL = ''
 
-// 登录接口
-export const reqLogin = (data) => Axios(httpURL + '/login',data,'post')
+// 登录接口  http://localhost:5000/users/api/login.do
+export const reqLogin = (data) => Axios(httpURL + '/users/api/login.do',data,'post')
 
 // 添加用户
 export const reqAddUser = (data) => Axios(httpURL + 'manager/user/add',data,'post')

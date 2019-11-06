@@ -97,3 +97,5 @@ this.props.history.push()   #需要回退的话，用push
 this.props.history.replace()   #不需要回退回来
 this.props.history.go()
 
+## localStorage本地存储。
+yarn add store 跨浏览器兼容

@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { Form, Icon, Input, Button,message } from 'antd';
+import {Redirect} from 'react-router-dom'
 import {reqLogin} from '../../api'
-import logo from './images/favicon.ico'
-
+import logo from '../../assets/images/favicon.ico'
 import './login.less'
+import memoryUtils from '../../utils/memoryUtils'
+import storageUtils from '../../utils/storageUtils'
 
 class Login extends Component {
     constructor(props) {
@@ -32,8 +34,10 @@ class Login extends Component {
                         console.log('reqLogin请求成功',result);
                         if(result.status === 0){
                             message.success('登录成功')
-                            // 跳转
-                            this.props.history.replace('/');
+                            const user = result.data;
+                            memoryUtils.user = user;    // 保存在内存中
+                            storageUtils.saveUser(user);  // 保存在localStorage中
+                            this.props.history.replace('/');   // 跳转
                         }else{
                             message.error(result.msg)
                         }
@@ -64,6 +68,12 @@ class Login extends Component {
 			}
 		}
     render() {
+        // 判断用户是否登录，已经登录的话自动跳转到管理界面
+        const user = memoryUtils.user;
+        if(user._id){
+            return <Redirect to="/" />
+        }
+
         const { getFieldDecorator } = this.props.form;
         return (
             <div className="login">
