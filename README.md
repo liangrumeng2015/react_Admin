@@ -99,3 +99,6 @@ this.props.history.go()
 
 ## localStorage本地存储。
 yarn add store 跨浏览器兼容
+
+## 让非路由组件变成路由组件
+withRouter 高阶组件
