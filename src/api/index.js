@@ -24,3 +24,12 @@ export const reqAddUser = (data) => Axios(httpURL + 'manager/user/add',data,'pos
 
 // 获取天气
 export const reqGetWeather = (data) => Axios(httpURL + '/users/api/weather.do',data,'get')
+
+// 获取分类(一级/二级)
+export const reqCategory = (data) => Axios(httpURL + '/users/api/category/getCategoryList.do',data,'get')
+
+// 添加分类
+export const addCategory = (data) => Axios(httpURL + '/users/api/category/addCategory.do',data,'post')
+
+// 更新分类
+export const reqUpdateCategory = (data) => Axios(httpURL + '/users/api/category/updateCategory.do',data,'post')
