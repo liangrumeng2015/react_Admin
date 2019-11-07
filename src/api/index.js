@@ -21,3 +21,6 @@ export const reqLogin = (data) => Axios(httpURL + '/users/api/login.do',data,'po
 
 // 添加用户
 export const reqAddUser = (data) => Axios(httpURL + 'manager/user/add',data,'post')
+
+// 获取天气
+export const reqGetWeather = (data) => Axios(httpURL + '/users/api/weather.do',data,'get')

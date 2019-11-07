@@ -1,13 +1,14 @@
 /**
- * 
+ *   home组件
  */
 import React ,{Component} from 'react';
+import './home.less'
 
 class Home extends Component{
     render(){
         return(
-            <div>
-                Home组件
+            <div className="home">
+                欢迎使用React后台管理系统
             </div>
         )
     }

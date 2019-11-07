@@ -102,3 +102,9 @@ yarn add store 跨浏览器兼容
 
 ## 让非路由组件变成路由组件
 withRouter 高阶组件
+
+## left-nav 两个问题？
+(1)刷新时如何选中对应的菜单项？
+    selectedKey 是当前请求的path
+(2)刷新子菜单路径时，自动打开子菜单列表？
+    openKey是一级列表项的某个key
