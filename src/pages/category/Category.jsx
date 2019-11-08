@@ -63,12 +63,13 @@ class Category extends Component {
     }
     /**
      * 获取category列表(一级或者二级)
+     * parentIdParams 如果没有指定，就根据状态中的parentId请求，如果指定了，就根据指定的发送请求
      */
-    getCategoryList = async () =>{
+    getCategoryList = async (parentIdParams) =>{
         this.setState({
             loading:true
         })
-        const {parentId} = this.state;
+        const parentId = parentIdParams || this.state.parentId;
         const result = await reqCategory({parentId});
         if(result.success){
             // 一级、二级分类数据
@@ -112,11 +113,32 @@ class Category extends Component {
      *  添加分类
      */
     addCategory = () =>{
-        // const result = addCategory({
-        //     parentId:'',
-        //     name:''
-        // });
-        console.log('addCategory',this.state.parentId)
+        this.form.validateFields(async(err,values)=>{
+            if(!err){
+                // 1.拿到数据
+                const {parentId,parentName} = this.form.getFieldsValue()
+                //2.调用添加接口
+                const result = await addCategory({
+                    parentId:parentId,
+                    name:parentName
+                });
+                if(result.success){
+                    // 当前传入的parentId 等于状态里面的parentId 才需要重新获取
+                    if(parentId === this.state.parentId){
+                        // 重新获取
+                        this.getCategoryList();
+                    }else if(parentId === '0'){   // 在二级分类列表下添加的一级分类项，需要重新获取一级分类列表，但不需要显示一级列表
+                        this.getCategoryList('0');
+                    }
+                }
+                // 2.隐藏确认框
+                this.setState({
+                    showStatus:0
+                })
+                // 3.重置清除数据
+                this.form.resetFields()
+            }
+        })
     }
 
     /**
@@ -133,22 +155,30 @@ class Category extends Component {
     /**
      * 更新分类
      */
-    updateCategory = async () =>{
-        //1.发请求
-        const result = await reqUpdateCategory({
-            id:this.categoryItem._id,
-            name:this.form.getFieldValue('parentName')
-        })
-        //2.隐藏确定
-        this.setState({
-            showStatus:0
-        })
+    updateCategory = () =>{
 
-        // 3.重新显示列表
-        this.getCategoryList();
+        // 先要进行表单验证，只有通过了才进行下一步
+        this.form.validateFields(async(err,values)=>{
+            if(!err){
+                const {parentName} = values;
+                //1.发请求
+                await reqUpdateCategory({
+                    id:this.categoryItem._id,
+                    name:parentName
+                })
+                //2.隐藏确定
+                this.setState({
+                    showStatus:0
+                })
 
-        //4.清除数据
-        this.form.resetFields();
+                // 3.重新显示列表
+                this.getCategoryList();
+
+                //4.清除数据
+                this.form.resetFields();
+            }
+        })
+        
     }
 
     /**
@@ -157,7 +187,7 @@ class Category extends Component {
     handleCancel = () =>{
         //清除数据
         this.form.resetFields();
-        
+
         this.setState({
             showStatus:0
         })
@@ -211,7 +241,11 @@ class Category extends Component {
                     onOk={this.addCategory}
                     onCancel={this.handleCancel}
                     >
-                    <AddForm />
+                    <AddForm 
+                        category={category} 
+                        parentId={parentId} 
+                        setForm={(form)=>{this.form = form}}
+                    />
                 </Modal>
                 <Modal
                     title="更新分类"
@@ -219,7 +253,8 @@ class Category extends Component {
                     onOk={this.updateCategory}
                     onCancel={this.handleCancel}
                     >
-                    <UpdateForm categoryName={categoryItem.name} 
+                    <UpdateForm 
+                        categoryName={categoryItem.name} 
                         setForm={(form)=>{this.form = form}}/>
                 </Modal>
             </div>
