@@ -33,3 +33,9 @@ export const addCategory = (data) => Axios(httpURL + '/users/api/category/addCat
 
 // 更新分类
 export const reqUpdateCategory = (data) => Axios(httpURL + '/users/api/category/updateCategory.do',data,'post')
+
+// 获取产品
+export const reqGetProductList = (data) =>Axios(httpURL + '/users/api/product/getProductsList.do',data,'post')
+
+// 产品搜索
+export const reqSearchProduct = (data) =>Axios(httpURL + '/users/api/product/searchProduct.do',data,'post')
