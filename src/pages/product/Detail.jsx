@@ -7,7 +7,13 @@ import { LinkButton } from '../../components/link-button';
 const Item = List.Item;
 
 class Detail extends Component{
-    
+    constructor(props){
+        super(props)
+        this.state = {
+            cName1:'',   // 一级分类名称
+            cName2:''  // 二级分类名称
+        }
+    }
     render(){
         // 接收携带过来的参数：
         const {name,desc,price} = this.props.location.state.product;
