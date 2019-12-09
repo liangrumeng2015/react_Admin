@@ -53,6 +53,11 @@ const menuList = [
                 title:'饼图',
                 key:'/charts/pie',
                 icon:'tool'
+            },
+            {
+                title:'折线图1',
+                key:'/charts/line1',
+                icon:'tool'
             }
         ]
     },

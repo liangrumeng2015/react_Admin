@@ -4,7 +4,7 @@ import './assets/css/App.css';
 
 import Login from './pages/login/Login'
 import Admin from './pages/admin/Admin'
-
+import Test from './pages/test/test'
 
 class App extends Component{
   constructor(props){
@@ -19,6 +19,7 @@ class App extends Component{
         <Switch>   
           <Route path="/login" component={Login}></Route>
           <Route path="/" component={Admin}></Route>
+          {/* <Route path='/test' component={Test} /> */}
         </Switch>
       </BrowserRouter>
     )

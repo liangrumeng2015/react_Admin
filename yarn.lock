@@ -3623,6 +3623,13 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
+echarts@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/echarts/-/echarts-4.4.0.tgz#d5260566cef0b98f5a00baf1b5010e92c1c23661"
+  integrity sha512-zJD1YaONA2Ib6rKCpkU9rT/K+OFJ/F0/3Mj5FamGLXytBV5g36gsQGv8sYL7fVs/BFj/sn3wemyctlgIHMCA5w==
+  dependencies:
+    zrender "4.1.1"
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -8891,10 +8898,10 @@ react-app-polyfill@^1.0.4:
     regenerator-runtime "0.13.3"
     whatwg-fetch "3.0.0"
 
-react-app-rewired@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/react-app-rewired/-/react-app-rewired-2.1.4.tgz#7d8bb1f6559693f893cadc890d40b540402400cc"
-  integrity sha512-OEd3xWIqk+6HJyi4/uogBphbZqaZXOIv+Mz/DWLZKdzmWdYpXJgeatHcFUjWfj/vsJIDLMI2KaS/FwdAwlkTGw==
+react-app-rewired@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/react-app-rewired/-/react-app-rewired-2.1.5.tgz#592ec2eae5c3c5cd96c80930b5dc3f6c34da1dc6"
+  integrity sha512-Gr8KfCeL9/PTQs8Vvxc7v8wQ9vCFMnYPhcAkrMlzkLiMFXS+BgSwm11MoERjZm7dpA2WjTi+Pvbu/w7rujAV+A==
   dependencies:
     semver "^5.6.0"
 
@@ -11246,3 +11253,8 @@ yargs@^13.3.0:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^13.1.1"
+
+zrender@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/zrender/-/zrender-4.1.1.tgz#201e58a55cf1a7e973e1dbad3c15596ef8779f54"
+  integrity sha512-epy1rl82dP/JKxhZl+JRfwcZjobKOoynxBzvBZJBPjmDMAxBE4grLjDryx8BHkHlKyWsUkis4XEL2wN61w5l4w==

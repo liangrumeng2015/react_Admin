@@ -11,6 +11,7 @@ import Role from '../role/Role'
 import User from '../user/User'
 import Bar from '../charts/Bar'
 import Line from '../charts/Line'
+import Line1 from '../charts/Line1'
 import Pie from '../charts/Pie'
 
 const { Footer, Sider, Content } = Layout;
@@ -45,6 +46,7 @@ class Admin extends Component {
                             <Route path='/charts/bar' component={Bar} />
                             <Route path='/charts/line' component={Line} />
                             <Route path='/charts/pie' component={Pie} />
+                            <Route path='/charts/line1' component={Line1} />
                             <Redirect to='/home' />
                         </Switch>
                     </Content>
