@@ -14,7 +14,6 @@ function Axios(url,data={},method='get'){
     //     url: url,
     //     data: data
     // }).then((res)=>{
-
     // })
     return new Promise((resolve,reject)=>{
         let promise;
